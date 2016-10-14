@@ -27,6 +27,7 @@
 /// g++ --std=c++11 -O3 -I$BOOST_ROOT/include -o compare_polymorphism compare_polymorphism.cxx
 /// Options: -DNROLLS=number  default is 1000000000
 ///          -DSTATIC_POLY    select static polymorphism (default runtime)
+///          -DBULK_OPERATION select static polymorphism with bulk operation
 /// debug options: replace -O3 by e.g. '-g -ggdb'
 
 #include "runtime_container.h"
@@ -42,6 +43,10 @@
 
 typedef std::chrono::system_clock system_clock;
 typedef std::chrono::nanoseconds TimeScale;
+
+#if defined(BULK_OPERATION) and not defined(STATIC_POLY)
+#define STATIC_POLY
+#endif
 
 #ifdef STATIC_POLY
 #define VIRTUAL_ATTRIBUTE
@@ -138,24 +143,62 @@ struct printer
 };
 
 /**
+ * @brief Unary increment functor for bulk operation
+ * This test is probably a bit artificial, all the members are simply
+ * incremented, which probably gives the compiler even better optimization
+ * possibilities. This might be different with a more complex and variable
+ * executed operation.
+ */
+template<typename ContainerT>
+struct increment
+{
+  increment(ContainerT& c) : _c(c) {}
+  typedef void return_type;
+  template<typename T>
+  return_type operator()(T&) {
+    *(static_cast<T&>(_c)) += 1;
+  }
+
+  ContainerT& _c;
+};
+
+/**
  * @brief The test loop
+ *
+ * TODO: the ifdef's are a bit ugly but the simple testing approach justifies
+ * the means.
  */
 template<typename ContainerT>
 int test_loop(ContainerT& container, int nrolls) {
 
   system_clock::time_point refTime = system_clock::now();
+  auto functor = add_value<int>(1);
   for (auto roll = 0; roll < nrolls; roll++) {
+#if defined(STATIC_POLY) and defined(BULK_OPERATION)
+    boost::mpl::for_each<typename ContainerT::types>(increment<ContainerT>(container));
+#else
     for (auto index = 0; index < container.size(); index++) {
 #ifdef STATIC_POLY
-      container.apply(index, add_value<int>(1));
+      container.apply(index, functor);
 #else
       *(container[index])+=1;
 #endif
     }
+#endif
   }
   auto duration = std::chrono::duration_cast<TimeScale>(system_clock::now() - refTime);
 
   std::cout << "testing "
+#ifdef STATIC_POLY
+#ifdef BULK_OPERATION
+	    << "static polymorphic bulk operation "
+#else
+	    << "static polymorphic "
+#endif
+#else
+	    << "runtime polymorphic "
+#endif
+	    << "container with "
             << std::setw(10) << nrolls << " iteration(s): "
             << std::setw(10) << duration.count() << " ns"
             << std::endl;
