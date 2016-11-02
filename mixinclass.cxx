@@ -1,4 +1,20 @@
-// Demonstrator for usage of mixin classes as defined in mixinclass.h
+//****************************************************************************
+//* This file is free software: you can redistribute it and/or modify        *
+//* it under the terms of the GNU General Public License as published by     *
+//* the Free Software Foundation, either version 3 of the License, or        *
+//* (at your option) any later version.                                      *
+//*                                                                          *
+//* Primary Author(s): Matthias Richter <mail@matthias-richter.com>          *
+//*                                                                          *
+//* The authors make no claims about the suitability of this software for    *
+//* any purpose. It is provided "as is" without express or implied warranty. *
+//****************************************************************************
+
+/// @file   mixinclass.cxx
+/// @author Matthias Richter
+/// @since  2016-06-10
+/// @brief  Demonstrator for usage of mixin classes as defined in mixinclass.h
+
 // See header files for additional comments
 //
 // compilation:

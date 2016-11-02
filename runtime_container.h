@@ -8,16 +8,16 @@
 //* the Free Software Foundation, either version 3 of the License, or        *
 //* (at your option) any later version.                                      *
 //*                                                                          *
-//* Primary Authors: Matthias Richter <richterm@scieq.net>                   *
+//* Primary Author(s): Matthias Richter <mail@matthias-richter.com>          *
 //*                                                                          *
 //* The authors make no claims about the suitability of this software for    *
 //* any purpose. It is provided "as is" without express or implied warranty. *
 //****************************************************************************
 
-//  @file   runtime_container.h
-//  @author Matthias Richter
-//  @since  2015-09-11
-//  @brief  A general runtime container for a compile time sequence
+/// @file   runtime_container.h
+/// @author Matthias Richter
+/// @since  2016-09-11
+/// @brief  A general runtime container for a compile time sequence
 
 // A general runtime container for a compile time sequence
 // of types. A mixin class is used to represent a member of each data
