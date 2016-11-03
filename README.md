@@ -30,35 +30,41 @@ casts, which now allow the compiler to optimize the code.
 ## Test programs
 Program                        | Description
 -----------------------            | -----------
-[`mixinclass.cxx`](mixinclass.cxx) | Demonstrator for usage of mixin classes as defined in `mixinclass.h`
-[`dynamic_mixin.cxx`](dynamic_mixin.cxx) | Demonstrator for the composite factory for a mixin class creator
-[`test_runtime_container.cxx`](test_runtime_container.cxx) | Simple test program for `runtime_container.h`
-[`bench_runtime_container.cxx`](bench_runtime_container.cxx) | Simple benchmark program for `runtime_container.h`
-[`multiple_distributions.cxx`](multiple_distributions.cxx) | A runtime container application for different data types
-[`compare_polymorphism.cxx`](compare_polymorphism.cxx) | Comparison of runtime and static polymorphism
+[`mixinclass.cxx`](#_mixinclass_cxx) | Demonstrator for usage of mixin classes as defined in `mixinclass.h`
+[`dynamic_mixin.cxx`](#_dynamic_mixin_cxx) | Demonstrator for the composite factory for a mixin class creator
+[`test_runtime_container.cxx`](#_test_runtime_container_cxx) | Simple test program for `runtime_container.h`
+[`bench_runtime_container.cxx`](#_bench_runtime_container_cxx) | Simple benchmark program for `runtime_container.h`
+[`multiple_distributions.cxx`](#_multiple_distributions_cxx) | A runtime container application for different data types
+[`compare_polymorphism.cxx`](#_compare_polymorphism_cxx) | Comparison of runtime and static polymorphism
 
-### `mixinclass.cxx`
+<a name="_mixinclass_cxx" />
+### [`mixinclass.cxx`](mixinclass.cxx)
 Test program for a mixin based class design.
 
-### `dynamic_mixin.cxx`
+<a name="_dynamic_mixin_cxx" />
+### [`dynamic_mixin.cxx`](dynamic_mixin.cxx)
 Factory approach for creating mixin assemblies depending on runtime property parameter.
 
-### `test_runtime_container.cxx`
+<a name="_test_runtime_container_cxx" />
+### [`test_runtime_container.cxx`](test_runtime_container.cxx)
 Preliminary test of various mpl operations and runtime container functionality. Dacomentation needs to be improved.
 
-### `bench_runtime_container.cxx`
+<a name="_bench_runtime_container_cxx" />
+### [`bench_runtime_container.cxx`](bench_runtime_container.cxx)
 Preliminary benchmark program for the runtime container. Documentation and statistics printout need to be improved.
 
 #### compilation
     g++ --std=c++11 -O3 -I$BOOST_ROOT/include -o bench_runtime_container bench_runtime_container.cxx
 
-### `multiple_distributions.cxx`
+<a name="_multiple_distributions_cxx" />
+### [`multiple_distributions.cxx`](multiple_distributions.cxx)
 Demonstrator for using the runtime container as a type safe container for multiple statistics distributions. The example uses distributions from std `<random>`, which do not have a common base class type.
 
 #### compilation
     g++ --std=c++11 -g -ggdb -I$BOOST_ROOT/include -o multiple_distributions multiple_distributions.cxx
 
-### `compare_polymorphism.cxx`
+<a name="_compare_polymorphism_cxx" />
+### [`compare_polymorphism.cxx`](compare_polymorphism.cxx)
 This is a lightweight test program for comparison of runtime and static polymorphism. It defines an interface
 with virtual functions in the runtime polymorphic case, object pointers are stored in a stl vector.
 In the static polymorphic case, a runtime container object is created from the compile time sequence of
