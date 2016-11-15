@@ -18,6 +18,7 @@
 /// @author Matthias Richter
 /// @since  2016-09-11
 /// @brief  A general runtime container for a compile time sequence
+/// This file is part of https://github.com/matthiasrichter/gNeric
 
 // A general runtime container for a compile time sequence
 // of types. A mixin class is used to represent a member of each data
@@ -44,6 +45,8 @@
 #include <boost/mpl/size.hpp>
 
 using namespace boost::mpl::placeholders;
+
+namespace gNeric {
 
 /**
  * @class DefaultInterface
@@ -560,5 +563,7 @@ struct create_rtc_types
     , boost::mpl::push_back<_1, create_rtc<Types , Base , boost::mpl::plus<_2, boost::mpl::int_<1>>>>
     >::type type;
 };
+
+};// namespace gNeric
 
 #endif

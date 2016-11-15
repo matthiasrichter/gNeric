@@ -17,6 +17,8 @@
 #include "runtime_container.h"
 #include <chrono>
 
+using namespace gNeric;
+
 typedef std::chrono::system_clock system_clock;
 typedef std::chrono::nanoseconds TimeScale;
 

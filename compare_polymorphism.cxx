@@ -41,6 +41,8 @@
 #include <boost/mpl/for_each.hpp>
 #include <boost/mpl/at.hpp>
 
+using namespace gNeric;
+
 typedef std::chrono::system_clock system_clock;
 typedef std::chrono::nanoseconds TimeScale;
 

@@ -15,6 +15,8 @@
 #include <boost/mpl/at.hpp>
 #include "runtime_container.h"
 
+using namespace gNeric;
+
 template< typename N1, typename N2 >
 struct int_plus : boost::mpl::int_<( N1::value + N2::value )> {};
 template< typename N1, typename N2 >

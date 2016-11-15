@@ -23,6 +23,7 @@
 #include <iostream>
 #include <iomanip> // std::setw
 #include <vector>
+#include <map>
 #include <random> // random distribution
 #include <exception>
 #include <stdexcept>
@@ -32,6 +33,8 @@
 #include <boost/mpl/range_c.hpp>
 #include <boost/mpl/size.hpp>
 #include "runtime_container.h"
+
+using namespace gNeric;
 
 template<typename ReturnType, typename RandomEngine>
 class randval {
